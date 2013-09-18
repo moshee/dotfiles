@@ -1,0 +1,7 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =5
+let g:netrw_dirhist_1='/root/.vim/syntax'
+let g:netrw_dirhist_2='/root/projects/ruby/scrape/lib/scrape'
+let g:netrw_dirhist_3='/root/projects/ruby/scrape/.git'
+let g:netrw_dirhist_4='/root/projects/go/src/md'
+let g:netrw_dirhist_5='/root/projects/go/src/displaynone'
