@@ -2,6 +2,7 @@ runtime! debian.vim
 
 syntax on
 set background=light
+set t_Co=256
 colorscheme m
 filetype plugin indent on
 filetype plugin on
@@ -58,9 +59,9 @@ map! <F1> <ESC>
 au Filetype           html  setlocal ts=2 sts=2 sw=2 et
 au FileType           ruby  setlocal ts=2 sts=2 sw=2 et
 au FileType           go    setlocal ts=4 sw=4 noet
-au BufWrite           *.go  Fmt
-au BufRead,BufNewFile *.sql setf pgsql
 au FileType           pgsql setlocal ts=4 sw=4 et
+
+au BufWrite           *.go  Fmt
 
 func! MinCss()
   %s/\v[\t\r\n]//
