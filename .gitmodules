@@ -1,0 +1,3 @@
+[submodule "submodules/emmet-vim"]
+	path = submodules/emmet-vim
+	url = git://github.com/mattn/emmet-vim.git
