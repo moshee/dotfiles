@@ -8,6 +8,8 @@ colorscheme m
 filetype plugin indent on
 filetype plugin on
 
+exec pathogen#infect()
+
 if &termencoding == ""
   let &termencoding = &encoding
 endif
