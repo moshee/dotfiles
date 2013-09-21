@@ -1,3 +1,4 @@
+runtime bundle/vim-pathogen/autoload/pathogen.vim
 runtime! debian.vim
 
 syntax on
