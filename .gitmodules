@@ -10,3 +10,9 @@
 [submodule ".vim/bundle/vim-go-templates"]
 	path = .vim/bundle/vim-go-templates
 	url = https://github.com/cespare/vim-go-templates.git
+[submodule ".vim/bundle/vim-autoclose"]
+	path = .vim/bundle/vim-autoclose
+	url = https://github.com/Townk/vim-autoclose.git
+[submodule ".vim/bundle/vim-golang"]
+	path = .vim/bundle/vim-golang
+	url = https://github.com/jnwhiteh/vim-golang.git
