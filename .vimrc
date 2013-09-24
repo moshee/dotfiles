@@ -66,7 +66,7 @@ vnoremap / /\v
 nnoremap ; :
 map! <F1> <ESC>
 
-au Filetype html  setlocal ts=2 sts=2 sw=2 et
+au Filetype html,gotplhtml  setlocal ts=2 sts=2 sw=2 et
 au FileType ruby  setlocal ts=2 sts=2 sw=2 et
 au FileType go    setlocal ts=4 sw=4 noet
 au FileType pgsql setlocal ts=4 sw=4 et
