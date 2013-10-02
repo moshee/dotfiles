@@ -16,3 +16,4 @@ export PATH=$GOPATH/bin:$GOROOT/bin:/usr/local/pgsql/bin:$PATH
 export TERM=xterm-256color
 
 export VIM=/usr/local/share/vim
+export EDITOR=vim

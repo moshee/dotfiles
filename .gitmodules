@@ -19,3 +19,9 @@
 [submodule ".vim/bundle/vim-javascript"]
 	path = .vim/bundle/vim-javascript
 	url = https://github.com/pangloss/vim-javascript.git
+[submodule ".vim/bundle/scss"]
+	path = .vim/bundle/scss
+	url = https://github.com/cakebaker/scss-syntax.vim
+[submodule ".vim/bundle/css3"]
+	path = .vim/bundle/css3
+	url = https://github.com/hail2u/vim-css3-syntax.git
