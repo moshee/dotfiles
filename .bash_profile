@@ -12,7 +12,7 @@ export GOARCH=386
 export GOPATH=/root/projects/go
 
 export LANG=en_US.UTF-8
-export PATH=$GOPATH/bin:$GOROOT/bin:/usr/local/pgsql/bin:$PATH
+export PATH=/usr/local/node/bin:$GOPATH/bin:$GOROOT/bin:/usr/local/pgsql/bin:$PATH
 export TERM=xterm-256color
 
 export VIM=/usr/local/share/vim

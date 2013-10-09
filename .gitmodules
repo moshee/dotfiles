@@ -25,3 +25,6 @@
 [submodule ".vim/bundle/css3"]
 	path = .vim/bundle/css3
 	url = https://github.com/hail2u/vim-css3-syntax.git
+[submodule ".vim/bundle/coffeescript"]
+	path = .vim/bundle/coffeescript
+	url = https://github.com/kchmck/vim-coffee-script.git
