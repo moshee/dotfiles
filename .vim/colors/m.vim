@@ -57,6 +57,4 @@ hi Title        cterm=bold ctermfg=88
 
 hi Todo			cterm=italic,bold ctermfg=0
 hi Error		cterm=bold ctermfg=lightgrey ctermbg=darkred 
-
-" vim:et:ff=unix:tw=0:ts=4:sw=4
-" EOF m.vim
+hi Folded       cterm=bold ctermfg=lightgrey ctermbg=white

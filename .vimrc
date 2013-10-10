@@ -61,20 +61,15 @@ nnoremap <leader>\ :tabclose<CR>
 " less stupid regex searching
 nnoremap / /\v
 vnoremap / /\v
+nnoremap ? ?\v
+vnoremap ? ?\v
 
 " lazy and accidents
 nnoremap ; :
 map! <F1> <ESC>
 
 au BufRead,BufNewFile Guardfile set ft=ruby
+au BufWrite *.go  Fmt
 
 au Filetype html,gotplhtml  setlocal ts=2 sts=2 sw=2 et
-au FileType ruby  setlocal ts=2 sts=2 sw=2 et
-augroup go
-	au FileType go setlocal ts=4 sw=4 noet
-	au FileType go setlocal makeprg=go\ build
-	au FileType go setlocal efm=%f:%l:\ %m
-augroup END
 au FileType pgsql setlocal ts=4 sw=4 et
-
-au BufWrite *.go  Fmt
