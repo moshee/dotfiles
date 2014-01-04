@@ -1,0 +1,13 @@
+[user]
+	name = moshee
+	email = moshee@displaynone.us
+[alias]
+	co = checkout
+	l = log --oneline --graph
+	ll = log --oneline --graph --stat
+[push]
+	default = current
+[color]
+	ui = auto
+[core]
+	excludesfile = ~/.gitignore
