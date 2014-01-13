@@ -51,10 +51,9 @@ hi Special		ctermfg=28
 " SpecialChar = Special
 hi Tag			ctermfg=18
 " Delimiter = Special
-hi SpecialComment cterm=italic ctermfg=0
 " Debug = Special
 hi Title        cterm=bold ctermfg=88
 
-hi Todo			cterm=italic,bold ctermfg=0
-hi Error		cterm=bold ctermfg=lightgrey ctermbg=darkred 
-hi Folded       cterm=bold ctermfg=lightgrey ctermbg=white
+hi Todo			cterm=bold,underline ctermfg=0 ctermbg=white
+hi Error		cterm=bold ctermfg=white ctermbg=darkred 
+hi Folded       cterm=bold ctermfg=242 ctermbg=255
