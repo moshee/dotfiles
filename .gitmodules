@@ -28,3 +28,6 @@
 [submodule ".vim/bundle/coffeescript"]
 	path = .vim/bundle/coffeescript
 	url = https://github.com/kchmck/vim-coffee-script.git
+[submodule ".vim/bundle/vim-gocode"]
+	path = .vim/bundle/vim-gocode
+	url = https://github.com/Blackrush/vim-gocode
