@@ -1,1 +1,5 @@
-.vim/.netrwhist
+.*.swp
+.*.swo
+*.class
+.DS_Store
+._*
