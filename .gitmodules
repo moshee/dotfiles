@@ -31,3 +31,6 @@
 [submodule ".vim/bundle/vim-gocode"]
 	path = .vim/bundle/vim-gocode
 	url = https://github.com/Blackrush/vim-gocode
+[submodule ".vim/bundle/MatchTag"]
+	path = .vim/bundle/MatchTag
+	url = https://github.com/gregsexton/MatchTag.git
