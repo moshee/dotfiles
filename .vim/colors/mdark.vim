@@ -54,6 +54,4 @@ hi Tag			ctermfg=33
 
 hi Todo			cterm=bold,underline ctermfg=15 ctermbg=233
 hi Error		cterm=bold ctermfg=15 ctermbg=darkred
-
-" vim:et:ff=unix:tw=0:ts=4:sw=4
-" EOF m.vim
+hi Pmenu		ctermfg=255 ctermbg=237
