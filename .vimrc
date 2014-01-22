@@ -82,3 +82,9 @@ if !exists('g:neocomplcache_omni_patterns')
   let g:neocomplcache_omni_patterns = {}
 endif
 let g:neocomplcache_omni_patterns.go = '[^.[:digit:] *\t]\%(\.\)'
+
+" auto close brace
+inoremap {     {}<LEFT>
+inoremap {<CR> {<CR><BS>}<ESC>O
+inoremap {{    {
+inoremap {}    {}
