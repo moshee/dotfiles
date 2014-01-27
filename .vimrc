@@ -58,6 +58,10 @@ nnoremap <leader>, :tabprev<CR>
 nnoremap <leader>+ :tabnew<CR>
 nnoremap <leader>\ :tabclose<CR>
 
+" http://stackoverflow.com/questions/14727173/swap-items-in-comma-separated-list
+nnoremap <silent> gl "_yiw:s/\(\%#\w\+\)\(\_W\+\)\(\w\+\)/\3\2\1/<CR><c-o>/\w\+\_W\+<CR><c-l>
+nnoremap <silent> gh "_yiw?\w\+\_W\+\%#<CR>:s/\(\%#\w\+\)\(\_W\+\)\(\w\+\)/\3\2\1/<CR><c-o><c-l>
+
 " less stupid regex searching
 nnoremap / /\v
 vnoremap / /\v
@@ -75,8 +79,9 @@ au Filetype html,gotplhtml  setlocal ts=2 sts=2 sw=2 et
 au FileType pgsql setlocal ts=4 sw=4 et
 
 let g:neocomplcache_enable_at_startup = 1
-let g:neocomplcache_enable_smart_case = 1
-inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+"let g:neocomplcache_enable_smart_case = 1
+inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
+inoremap <expr><CR> neocomplcache#smart_close_popup() ."\<CR>"
 
 if !exists('g:neocomplcache_omni_patterns')
   let g:neocomplcache_omni_patterns = {}
@@ -84,7 +89,4 @@ endif
 let g:neocomplcache_omni_patterns.go = '[^.[:digit:] *\t]\%(\.\)'
 
 " auto close brace
-inoremap {     {}<LEFT>
 inoremap {<CR> {<CR><BS>}<ESC>O
-inoremap {{    {
-inoremap {}    {}
