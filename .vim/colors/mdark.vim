@@ -17,7 +17,7 @@ hi LineNr		ctermfg=239
 
 hi Comment		ctermfg=243
 
-hi Constant		cterm=bold,underline
+hi Constant		ctermfg=15 cterm=bold
 hi String		ctermfg=179
 hi Character	ctermfg=119
 hi Number		ctermfg=221
