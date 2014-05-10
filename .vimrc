@@ -73,7 +73,7 @@ nnoremap ; :
 map! <F1> <ESC>
 
 au BufRead,BufNewFile Guardfile set ft=ruby
-au BufWrite *.go  Fmt
+" au BufWrite *.go  Fmt
 
 au Filetype html,gotplhtml  setlocal ts=2 sts=2 sw=2 et
 au FileType pgsql setlocal ts=4 sw=4 et
@@ -90,3 +90,10 @@ let g:neocomplcache_omni_patterns.go = '[^.[:digit:] *\t]\%(\.\)'
 
 " auto close brace
 inoremap {<CR> {<CR><BS>}<ESC>O
+
+let g:go_bin_path = expand("$GOPATH/bin")
+"let g:go_disable_autoinstall = 1
+
+let g:UltiSnipsExpandTrigger = "<C-k>"
+let g:UltiSnipsJumpForwardTrigger = "<C-k>"
+let g:UltiSnipsJumpBackwardTrigger = "<S-TAB>"

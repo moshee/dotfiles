@@ -1,6 +1,7 @@
 [user]
 	name = moshee
 	email = moshee@displaynone.us
+	signingkey = F66B5DDA
 [alias]
 	co = checkout
 	l = log --oneline --graph
