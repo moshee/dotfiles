@@ -78,7 +78,7 @@ au BufRead,BufNewFile Guardfile set ft=ruby
 au Filetype html,gotplhtml  setlocal ts=2 sts=2 sw=2 et
 au FileType pgsql setlocal ts=4 sw=4 et
 
-let g:neocomplcache_enable_at_startup = 1
+"let g:neocomplcache_enable_at_startup = 1
 "let g:neocomplcache_enable_smart_case = 1
 inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
 inoremap <expr><CR> neocomplcache#smart_close_popup() ."\<CR>"
@@ -91,9 +91,7 @@ let g:neocomplcache_omni_patterns.go = '[^.[:digit:] *\t]\%(\.\)'
 " auto close brace
 inoremap {<CR> {<CR><BS>}<ESC>O
 
-let g:go_bin_path = expand("$GOPATH/bin")
-"let g:go_disable_autoinstall = 1
+command W w !sudo tee > /dev/null %
 
-let g:UltiSnipsExpandTrigger = "<C-k>"
-let g:UltiSnipsJumpForwardTrigger = "<C-k>"
-let g:UltiSnipsJumpBackwardTrigger = "<S-TAB>"
+au BufRead,BufNewFile /etc/nginx/*,/usr/local/nginx/conf/* if &ft == '' | setfiletype nginx | endif 
+au FileType nginx setlocal ts=4 sw=4 noet cindent

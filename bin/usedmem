@@ -1,0 +1,20 @@
+#!/bin/bash
+
+usedmem_linux() {
+	cat /proc/meminfo \
+		| egrep '^(MemTotal|MemFree|Cached):' \
+		| sed 's/[^0-9]//g' \
+		| dc -e "$(cat -)scsfdstLf-lc-1024/n[M/]nLt1024/n[M]n[ (]nLc1024/n[M cached)]n"
+}
+
+usedmem_osx() {
+	vm_stat \
+		| egrep 'Pages active|File\-backed' \
+		| egrep -o [0-9]+ \
+		| dc -f - -e "$(sysctl -n hw.pagesize hw.memsize)sMdsP*1024 1024*dsA/sFlP*lA/n[M/]nLMlA/n[M (]nlFn[M cached)]p"
+}
+
+case "$(uname)" in
+	Linux) usedmem_linux ;;
+	Darwin) usedmem_osx ;;
+esac
