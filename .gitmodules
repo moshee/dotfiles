@@ -61,3 +61,6 @@
 [submodule ".vim/bundle/align"]
 	path = .vim/bundle/align
 	url = https://github.com/vim-scripts/Align
+[submodule ".vim/bundle/vim-commentary"]
+	path = .vim/bundle/vim-commentary
+	url = https://github.com/tpope/vim-commentary.git
