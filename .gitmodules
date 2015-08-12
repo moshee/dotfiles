@@ -10,15 +10,6 @@
 [submodule ".vim/bundle/vim-go-templates"]
 	path = .vim/bundle/vim-go-templates
 	url = https://github.com/cespare/vim-go-templates.git
-[submodule ".vim/bundle/vim-autoclose"]
-	path = .vim/bundle/vim-autoclose
-	url = https://github.com/Townk/vim-autoclose.git
-[submodule ".vim/bundle/vim-golang"]
-	path = .vim/bundle/vim-golang
-	url = https://github.com/jnwhiteh/vim-golang.git
-[submodule ".vim/bundle/vim-javascript"]
-	path = .vim/bundle/vim-javascript
-	url = https://github.com/pangloss/vim-javascript.git
 [submodule ".vim/bundle/scss"]
 	path = .vim/bundle/scss
 	url = https://github.com/cakebaker/scss-syntax.vim
@@ -28,30 +19,15 @@
 [submodule ".vim/bundle/coffeescript"]
 	path = .vim/bundle/coffeescript
 	url = https://github.com/kchmck/vim-coffee-script.git
-[submodule ".vim/bundle/vim-gocode"]
-	path = .vim/bundle/vim-gocode
-	url = https://github.com/Blackrush/vim-gocode
 [submodule ".vim/bundle/MatchTag"]
 	path = .vim/bundle/MatchTag
 	url = https://github.com/gregsexton/MatchTag.git
-[submodule ".vim/bundle/neocomplcache"]
-	path = .vim/bundle/neocomplcache
-	url = https://github.com/Shougo/neocomplcache.vim
 [submodule ".vim/bundle/Dockerfile"]
 	path = .vim/bundle/Dockerfile
 	url = https://github.com/ekalinin/Dockerfile.vim.git
 [submodule ".vim/bundle/go"]
 	path = .vim/bundle/go
 	url = https://github.com/fatih/vim-go.git
-[submodule ".vim/bundle/ultisnips"]
-	path = .vim/bundle/ultisnips
-	url = https://github.com/SirVer/ultisnips.git
-[submodule ".vim/bundle/neosnippet"]
-	path = .vim/bundle/neosnippet
-	url = https://github.com/Shougo/neosnippet.vim.git
-[submodule ".vim/bundle/neosnippet-snippets"]
-	path = .vim/bundle/neosnippet-snippets
-	url = https://github.com/Shougo/neosnippet-snippets.git
 [submodule ".vim/bundle/vim-go"]
 	path = .vim/bundle/vim-go
 	url = https://github.com/fatih/vim-go
@@ -64,3 +40,6 @@
 [submodule ".vim/bundle/vim-commentary"]
 	path = .vim/bundle/vim-commentary
 	url = https://github.com/tpope/vim-commentary.git
+[submodule ".vim/bundle/javascript"]
+	path = .vim/bundle/javascript
+	url = https://github.com/pangloss/vim-javascript
