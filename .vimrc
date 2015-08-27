@@ -73,7 +73,7 @@ nnoremap ; :
 map! <F1> <ESC>
 
 au BufRead,BufNewFile Guardfile set ft=ruby
-au BufWrite *.go  Fmt
+au BufWrite *.go  GoImports
 
 au Filetype html,gotplhtml,gohtmltmpl  setlocal ts=2 sts=2 sw=2 et
 au FileType pgsql setlocal ts=4 sw=4 et
