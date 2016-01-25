@@ -1,0 +1,36 @@
+#!/bin/bash
+# Downloads, caches, and installs a version of Go.
+
+set -e
+
+DIR=~/.go-versions
+BASE_URL="https://storage.googleapis.com/golang/"
+
+if [ -z "$1" ]; then
+	echo "Usage: $0 <version>"
+	exit 1
+fi
+
+if [ -z "$GOOS" ]; then
+	echo "install-go: GOOS is not set"
+	exit 1
+fi
+
+if [ -z "$GOARCH" ]; then
+	echo "install-go: GOARCH is not set"
+	exit 1
+fi
+
+FILENAME=go$1.$GOOS-$GOARCH.tar.gz
+
+mkdir -p "$DIR"
+if [ ! -e "$DIR/$FILENAME" ]; then
+	curl -# -o "$DIR/$FILENAME" "$BASE_URL$FILENAME"
+fi
+
+if [ -d /usr/local/go ]; then
+	sudo mv -f '/usr/local/go' '/usr/local/go.old'
+fi
+
+sudo tar xz -C '/usr/local' -f "$DIR/$FILENAME"
+sudo rm -rf '/usr/local/go.old'
