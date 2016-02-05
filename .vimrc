@@ -33,6 +33,9 @@ set statusline=(%n)\ %<%F\ %m\ %r\ %=%l/%L,%v\ %y
 set nu
 set backspace=indent,eol,start
 
+" http://superuser.com/questions/99138/bulleted-lists-for-plain-text-documents-in-vim
+ let &formatlistpat='\v^\s*(\d+[\]:.)}\t ]|[\*\-][\t ])\s*'
+
 let mapleader = ","
 let g:user_emmet_expandabbr_key = '<c-e>'
 let g:use_emmet_complete_tag = 1
@@ -73,10 +76,11 @@ nnoremap ; :
 map! <F1> <ESC>
 
 au BufRead,BufNewFile Guardfile set ft=ruby
-au BufWrite *.go  Fmt
+au BufWrite *.go  GoImports
 
 au Filetype html,gotplhtml,gohtmltmpl  setlocal ts=2 sts=2 sw=2 et
 au FileType pgsql setlocal ts=4 sw=4 et
+au FileType arduino setlocal ts=4 sw=4 noet cindent
 
 " auto close brace
 inoremap {<CR> {<CR><BS>}<ESC>O
@@ -87,3 +91,4 @@ au BufRead,BufNewFile /etc/nginx/*,/usr/local/nginx/conf/* if &ft == '' | setfil
 au FileType nginx setlocal ts=4 sw=4 noet cindent
 
 let g:gofmt_command = "goimports"
+let g:vim_tags_auto_generate = 1
