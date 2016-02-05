@@ -1,0 +1,6 @@
+#!/bin/bash
+
+case $(uname) in
+	Linux) cat /proc/loadavg | cut -d" " -f1-3 ;;
+	Darwin) sysctl -n vm.loadavg | sed -Ee 's/^{ | }$//g' ;;
+esac
