@@ -34,12 +34,15 @@
 [submodule ".vim/bundle/html5"]
 	path = .vim/bundle/html5
 	url = https://github.com/othree/html5.vim.git
-[submodule ".vim/bundle/align"]
-	path = .vim/bundle/align
-	url = https://github.com/vim-scripts/Align
 [submodule ".vim/bundle/vim-commentary"]
 	path = .vim/bundle/vim-commentary
 	url = https://github.com/tpope/vim-commentary.git
 [submodule ".vim/bundle/javascript"]
 	path = .vim/bundle/javascript
 	url = https://github.com/pangloss/vim-javascript
+[submodule ".vim/bundle/vim-easy-align"]
+	path = .vim/bundle/vim-easy-align
+	url = https://github.com/junegunn/vim-easy-align.git
+[submodule ".vim/bundle/neocomplete.vim"]
+	path = .vim/bundle/neocomplete.vim
+	url = https://github.com/Shougo/neocomplete.vim.git

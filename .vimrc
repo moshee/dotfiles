@@ -75,20 +75,48 @@ vnoremap ? ?\v
 nnoremap ; :
 map! <F1> <ESC>
 
-au BufRead,BufNewFile Guardfile set ft=ruby
-au BufWrite *.go  GoImports
-
-au Filetype html,gotplhtml,gohtmltmpl  setlocal ts=2 sts=2 sw=2 et
-au FileType pgsql setlocal ts=4 sw=4 et
-au FileType arduino setlocal ts=4 sw=4 noet cindent
+nmap ga <Plug>(EasyAlign)
+xmap ga <Plug>(EasyAlign)
 
 " auto close brace
 inoremap {<CR> {<CR><BS>}<ESC>O
 
 command W w !sudo tee > /dev/null %
 
-au BufRead,BufNewFile /etc/nginx/*,/usr/local/nginx/conf/* if &ft == '' | setfiletype nginx | endif 
-au FileType nginx setlocal ts=4 sw=4 noet cindent
-
 let g:gofmt_command = "goimports"
 let g:vim_tags_auto_generate = 1
+
+let g:neocomplete#enable_at_startup = 1
+let g:neocomplete#enable_smart_case = 1
+let g:neocomplete#sources#syntax#min_keyword_length = 3
+
+" <CR>: close popup and save indent.
+inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
+function! s:my_cr_function()
+  return (pumvisible() ? "\<C-y>" : "" ) . "\<CR>"
+  " For no inserting <CR> key.
+  "return pumvisible() ? "\<C-y>" : "\<CR>"
+endfunction
+" <TAB>: completion.
+inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+" <C-h>, <BS>: close popup and delete backword char.
+inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
+inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
+
+if !exists('g:neocomplete#sources#omni#input_patterns')
+  let g:neocomplete#sources#omni#input_patterns = {}
+endif
+let g:neocomplete#sources#omni#input_patterns.go = '[^.[:digit:] *\t]\%(\.\)'
+
+au BufRead,BufNewFile Guardfile set ft=ruby
+au BufRead,BufNewFile /etc/nginx/*,/usr/local/nginx/conf/* if &ft == '' | setfiletype nginx | endif 
+au BufWrite           *.go GoImports
+
+au Filetype html,gotplhtml,gohtmltmpl setlocal ts=2 sts=2 sw=2 et
+au FileType pgsql                     setlocal ts=4 sw=4  et
+au FileType arduino                   setlocal ts=4 sw=4  noet cindent
+au FileType nginx                     setlocal ts=4 sw=4  noet cindent
+au FileType css                       setlocal omnifunc=csscomplete#CompleteCSS
+au FileType javascript                setlocal omnifunc=javascriptcomplete#CompleteJS
+
+
