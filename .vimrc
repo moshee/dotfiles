@@ -29,12 +29,12 @@ set sw=4
 set ts=4
 set hidden
 set laststatus=2
-set statusline=(%n)\ %<%F\ %m\ %r\ %=%l/%L,%v\ %y
+set statusline=%1*\ %n\ %*\ %<%F\ %m\ %r\ %=%l/%L,%v\ %y
 set nu
 set backspace=indent,eol,start
 
 " http://superuser.com/questions/99138/bulleted-lists-for-plain-text-documents-in-vim
- let &formatlistpat='\v^\s*(\d+[\]:.)}\t ]|[\*\-][\t ])\s*'
+let &formatlistpat='\v^\s*(\d+[\]:.)}\t ]|[\*\-][\t ])\s*'
 
 let mapleader = ","
 let g:user_emmet_expandabbr_key = '<c-e>'
@@ -75,6 +75,15 @@ vnoremap ? ?\v
 nnoremap ; :
 map! <F1> <ESC>
 
+fu! BlinkCursor()
+	set cursorline!
+	redraw
+	sleep 200m
+	set cursorline!
+endfu
+
+nnoremap <leader>c :call BlinkCursor()<CR>
+
 nmap ga <Plug>(EasyAlign)
 xmap ga <Plug>(EasyAlign)
 
@@ -106,6 +115,7 @@ inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
 if !exists('g:neocomplete#sources#omni#input_patterns')
   let g:neocomplete#sources#omni#input_patterns = {}
 endif
+
 let g:neocomplete#sources#omni#input_patterns.go = '[^.[:digit:] *\t]\%(\.\)'
 
 au BufRead,BufNewFile Guardfile set ft=ruby
@@ -119,4 +129,12 @@ au FileType nginx                     setlocal ts=4 sw=4  noet cindent
 au FileType css                       setlocal omnifunc=csscomplete#CompleteCSS
 au FileType javascript                setlocal omnifunc=javascriptcomplete#CompleteJS
 
+au FileType go nmap gt <Plug>(go-info)
+au FileType go nmap gi <Plug>(go-implements)
+au FileType go nmap gr <Plug>(go-rename)
+au FileType go nmap gs <Plug>(go-def-split)
+au FileType go nmap gb <Plug>(go-build)
+au FileType go nmap gr <Plug>(go-run)
 
+let g:go_highlight_functions = 1
+let g:go_highlight_methods = 1
