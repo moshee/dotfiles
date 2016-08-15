@@ -29,7 +29,7 @@ set sw=4
 set ts=4
 set hidden
 set laststatus=2
-set statusline=%1*\ %n\ %*\ %<%F\ %m\ %r\ %=%l/%L,%v\ %y
+set statusline=%1*\ %n\ %*\ %<%F\ %2*%m%*\ %2*%r%*\ %=%l/%L,%v\ %y
 set nu
 set backspace=indent,eol,start
 

@@ -49,7 +49,7 @@ hi Special		cterm=bold ctermfg=240
 hi Tag			ctermfg=18
 " Delimiter = Special
 " Debug = Special
-" hi Title        cterm=bold ctermfg=88
+hi Title        cterm=bold ctermfg=238
 
 hi Todo			cterm=bold,underline ctermfg=0 ctermbg=white
 hi Error		cterm=bold ctermfg=white ctermbg=darkred 
@@ -63,3 +63,4 @@ hi StatusLine	cterm=bold ctermbg=254 ctermfg=238
 hi StatusLineNC	cterm=none ctermbg=254 ctermfg=238
 hi VertSplit	cterm=none ctermbg=254 ctermfg=252
 hi User1		cterm=bold ctermbg=238 ctermfg=255
+hi User2		cterm=bold ctermbg=254 ctermfg=0
