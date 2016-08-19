@@ -1,10 +1,9 @@
-runtime bundle/vim-pathogen/autoload/pathogen.vim
 runtime! debian.vim
+
+exec pathogen#infect()
 
 filetype plugin indent on
 syntax on
-
-exec pathogen#infect()
 
 if &termencoding == ""
   let &termencoding = &encoding
@@ -85,10 +84,10 @@ map! <F1> <ESC>
 
 " find out where the cursor went on a big screen
 fu! BlinkCursor()
-	set cursorline!
+	set cursorline
 	redraw
 	sleep 200m
-	set cursorline!
+	set nocursorline
 endfu
 
 nnoremap <leader>c :call BlinkCursor()<CR>
@@ -102,21 +101,26 @@ au BufRead,BufNewFile Guardfile set ft=ruby
 au BufRead,BufNewFile /etc/nginx/*,/usr/local/nginx/conf/* if &ft == '' | setfiletype nginx | endif 
 au BufWrite           *.go GoImports
 
-au Filetype html,gotplhtml,gohtmltmpl setlocal ts=2 sts=2 sw=2 et
-au FileType pgsql                     setlocal ts=4 sw=4  et
-au FileType arduino                   setlocal ts=4 sw=4  noet cindent
-au FileType nginx                     setlocal ts=4 sw=4  noet cindent
-au FileType css                       setlocal omnifunc=csscomplete#CompleteCSS
-au FileType javascript                setlocal omnifunc=javascriptcomplete#CompleteJS
+au Filetype html,gotplhtml setlocal ts=2 sts=2 sw=2   et
+au FileType pgsql          setlocal ts=4 sts=4 sw=4   et
+au FileType arduino        setlocal ts=4 sts=4 sw=4 noet cindent
+au FileType nginx          setlocal ts=4 sts=4 sw=4 noet cindent
+au FileType css            setlocal ts=2 sts=2 sw=2   et omnifunc=csscomplete#CompleteCSS
+au FileType javascript     setlocal ts=4 sts=4 sw=4 noet omnifunc=javascriptcomplete#CompleteJS
 
-" Plugin - Scratch
+au FileType gotplhtml runtime! ftplugin/html.vim
+
+""" Plugin - Scratch """
+
 nnoremap <leader>s :Sscratch<CR>
 
-" Plugin - EasyAlign
+""" Plugin - EasyAlign """
+
 nmap ga <Plug>(EasyAlign)
 xmap ga <Plug>(EasyAlign)
 
-" Plugin - vim-go
+""" Plugin - vim-go """
+
 let g:gofmt_command = "goimports"
 let g:vim_tags_auto_generate = 1
 
@@ -130,7 +134,8 @@ au FileType go nmap gr <Plug>(go-run)
 let g:go_highlight_functions = 1
 let g:go_highlight_methods = 1
 
-" Plugin - neocomplete
+""" Plugin - neocomplete """
+
 let g:neocomplete#enable_at_startup = 1
 let g:neocomplete#enable_smart_case = 1
 let g:neocomplete#sources#syntax#min_keyword_length = 3
@@ -153,3 +158,9 @@ if !exists('g:neocomplete#sources#omni#input_patterns')
 endif
 
 let g:neocomplete#sources#omni#input_patterns.go = '[^.[:digit:] *\t]\%(\.\)'
+
+""" Plugin - fzf """
+
+nnoremap <leader>fv :vs <bar> FZF<CR>
+nnoremap <leader>fs :sp <bar> FZF<CR>
+nnoremap <leader>ff :FZF<cr>
