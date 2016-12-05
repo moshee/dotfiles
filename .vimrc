@@ -1,21 +1,24 @@
-runtime! debian.vim
+set nocompatible
 
 exec pathogen#infect()
+Helptags
 
+runtime! debian.vim
 filetype plugin indent on
 syntax on
 
 if &termencoding == ""
   let &termencoding = &encoding
 endif
-set encoding=utf-8
+
 setglobal fileencoding=utf-8
+set encoding=utf-8
 set fileencodings=utf-8,latin1
 set completeopt-=preview
 
 set background=light
-colorscheme m
 set t_Co=256
+colorscheme m
 
 set showcmd			" Show (partial) command in status line.
 set ignorecase		" Do case insensitive matching
@@ -24,12 +27,13 @@ set incsearch		" Incremental search
 set hlsearch
 set gdefault		" global subsitution by default
 set mouse=a			" Enable mouse usage (all modes)
+set sta
 set noet
 set sw=4
 set ts=4
 set hidden
 set laststatus=2
-set statusline=%1*\ %n\ %*\ %<%F\ %2*%m%*\ %2*%r%*\ %=%l/%L,%v\ %y
+set statusline=%1*\ %n\ %*\ %<%F\ %2*%m%*\ %2*%r%*%=%l/%L,%v\ [+%o]\ %2*%y%*
 set nu
 set backspace=indent,eol,start
 set splitright
@@ -38,14 +42,21 @@ set autoread
 set notimeout
 set ttimeout
 set ttimeoutlen=10
-set rtp+=/usr/local/opt/fzf
+set flp="\v^\s*(\*|\-|\d+[\]:.)}\t ])\s*" " Add ^\* and ^\- to flp
+set fo+=jMn
+
+if has("unix")
+	if has("osx")
+		set rtp+=/usr/local/opt/fzf
+	else
+		set rtp+=~/.fzf
+	endif
+endif
 
 " http://superuser.com/questions/99138/bulleted-lists-for-plain-text-documents-in-vim
 let &formatlistpat='\v^\s*(\d+[\]:.)}\t ]|[\*\-][\t ])\s*'
 
 let mapleader = ","
-let g:user_emmet_expandabbr_key = '<c-e>'
-let g:use_emmet_complete_tag = 1
 
 " expand one-line css blocks
 nnoremap <leader>e :s/{ \?/{\r\t/<CR>:s/:\(\S\)/: \1/g<CR>:s/; \?/;\r\t/g<CR>:s/;\? *}$/;\r}/<CR>
@@ -97,9 +108,12 @@ inoremap {<CR> {<CR><BS>}<ESC>O
 
 command W w !sudo tee > /dev/null %
 
+" TODO: command that replaces # with number seq in selection or range
+" TODO: command that expands single-line JSON-like objects (brackets and
+" line enders), preserving indentation
+
 au BufRead,BufNewFile Guardfile set ft=ruby
 au BufRead,BufNewFile /etc/nginx/*,/usr/local/nginx/conf/* if &ft == '' | setfiletype nginx | endif 
-au BufWrite           *.go GoImports
 
 au Filetype html,gotplhtml setlocal ts=2 sts=2 sw=2   et
 au FileType pgsql          setlocal ts=4 sts=4 sw=4   et
@@ -108,7 +122,9 @@ au FileType nginx          setlocal ts=4 sts=4 sw=4 noet cindent
 au FileType css            setlocal ts=2 sts=2 sw=2   et omnifunc=csscomplete#CompleteCSS
 au FileType javascript     setlocal ts=4 sts=4 sw=4 noet omnifunc=javascriptcomplete#CompleteJS
 
-au FileType gotplhtml runtime! ftplugin/html.vim
+au FileType gotplhtml      runtime! ftplugin/html.vim
+
+au FileType matlab         setlocal commentstring=%\ %s
 
 """ Plugin - Scratch """
 
@@ -121,18 +137,19 @@ xmap ga <Plug>(EasyAlign)
 
 """ Plugin - vim-go """
 
-let g:gofmt_command = "goimports"
-let g:vim_tags_auto_generate = 1
-
 au FileType go nmap gt <Plug>(go-info)
 au FileType go nmap gi <Plug>(go-implements)
 au FileType go nmap gr <Plug>(go-rename)
 au FileType go nmap gs <Plug>(go-def-split)
 au FileType go nmap gb <Plug>(go-build)
-au FileType go nmap gr <Plug>(go-run)
+au FileType go nmap gf <Plug>(go-freevars)
+au FileType go nmap gR <Plug>(go-run)
 
-let g:go_highlight_functions = 1
-let g:go_highlight_methods = 1
+let g:go_fmt_command             = "goimports"
+let g:vim_tags_auto_generate     = 1
+let g:go_highlight_functions     = 1
+let g:go_highlight_methods       = 1
+let g:go_fmt_experimental        = 1
 
 """ Plugin - neocomplete """
 
@@ -161,6 +178,11 @@ let g:neocomplete#sources#omni#input_patterns.go = '[^.[:digit:] *\t]\%(\.\)'
 
 """ Plugin - fzf """
 
-nnoremap <leader>fv :vs <bar> FZF<CR>
-nnoremap <leader>fs :sp <bar> FZF<CR>
-nnoremap <leader>ff :FZF<cr>
+nnoremap <leader>v :vs <bar> FZF<CR>
+nnoremap <leader>h :sp <bar> FZF<CR>
+nnoremap <leader>f :FZF<cr>
+
+""" Plugin - emmet """
+
+let g:user_emmet_expandabbr_key = '<c-e>'
+let g:use_emmet_complete_tag = 1

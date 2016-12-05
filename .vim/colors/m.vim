@@ -64,3 +64,4 @@ hi StatusLineNC	cterm=none ctermbg=254 ctermfg=238
 hi VertSplit	cterm=none ctermbg=254 ctermfg=252
 hi User1		cterm=bold ctermbg=238 ctermfg=255
 hi User2		cterm=bold ctermbg=254 ctermfg=0
+hi User3		cterm=none ctermbg=254 ctermfg=241
