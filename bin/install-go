@@ -34,3 +34,5 @@ fi
 
 sudo tar xz -C '/usr/local' -f "$DIR/$FILENAME"
 sudo rm -rf '/usr/local/go.old'
+
+go version
