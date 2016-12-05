@@ -137,13 +137,14 @@ xmap ga <Plug>(EasyAlign)
 
 """ Plugin - vim-go """
 
-au FileType go nmap gt <Plug>(go-info)
-au FileType go nmap gi <Plug>(go-implements)
-au FileType go nmap gr <Plug>(go-rename)
+au FileType go nmap gi <Plug>(go-info)
+au FileType go nmap gm <Plug>(go-implements)
+au FileType go nmap gR <Plug>(go-rename)
 au FileType go nmap gs <Plug>(go-def-split)
 au FileType go nmap gb <Plug>(go-build)
-au FileType go nmap gf <Plug>(go-freevars)
-au FileType go nmap gR <Plug>(go-run)
+au FileType go nmap gI <Plug>(go-install)
+au FileType go nmap gr <Plug>(go-run)
+au FileType go nmap gl <Plug>(go-metalinter)
 
 let g:go_fmt_command             = "goimports"
 let g:vim_tags_auto_generate     = 1
