@@ -2,7 +2,12 @@
 
 _gas() {
     local cur prev words cword
-    _init_completion || return
+	if declare -F _init_completions 2>&1 > /dev/null; then
+		_init_completions
+	else
+		COMPREPLY=()
+		_get_comp_words_by_ref cur prev words cword
+	fi
 
   # status          query status of all running tasks
   # startall        start all tasks
@@ -23,7 +28,7 @@ _gas() {
 		gas)
 			COMPREPLY=( $( compgen -W 'status startall killall names reload start stop kill restart signal tail logpath help' -- "$cur" ) )
 			;;
-		start|stop|kill|restart|signal|tail|logpath)
+		start|stop|kill|restart|signal|tail|logpath|status)
 			COMPREPLY=( $( compgen -W '$(gas names 2>/dev/null)' -- "$cur" ) )
 			;;
 		*)
