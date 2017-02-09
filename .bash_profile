@@ -9,3 +9,5 @@ PS1='\[\e]0;\w\a\]\[\e[1m\]\u@\h\[\e[0m\]\[\e[1;38;5;52m\](\[\e[0m\]\w\[\e[1;38;
 export TERM=xterm-256color
 export LANG=en_US.UTF-8
 export EDITOR=vim
+
+which gas 2>&1 > /dev/null && source ~/dotfiles/bin/gas_complete

@@ -1,0 +1,34 @@
+# gas(1) completion
+
+_gas() {
+    local cur prev words cword
+    _init_completion || return
+
+  # status          query status of all running tasks
+  # startall        start all tasks
+  # killall         kill all tasks
+  # names           get all task names, space separated
+  # reload          reload task list and update currently running tasks
+  # start <task>    start a task
+  # stop <task>     stop a task with SIGINT
+  # kill <task>     stop a task with SIGKILL
+  # restart <task>  restart a task
+  # signal <task> <signal>
+  #                 send a signal to a task using kill(1) names
+  # tail <task>     tail the logs of a task
+  # logpath <task>  get the path to the current log file of a task
+  # help            print this message
+
+	case $prev in
+		gas)
+			COMPREPLY=( $( compgen -W 'status startall killall names reload start stop kill restart signal tail logpath help' -- "$cur" ) )
+			;;
+		start|stop|kill|restart|signal|tail|logpath)
+			COMPREPLY=( $( compgen -W '$(gas names 2>/dev/null)' -- "$cur" ) )
+			;;
+		*)
+			_filedir
+			;;
+	esac
+} &&
+complete -F _gas gas
