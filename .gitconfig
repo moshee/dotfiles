@@ -6,6 +6,7 @@
 	co = checkout
 	l = log --oneline --graph
 	ll = log --oneline --graph --stat
+	pullsub = submodule update --recursive --remote
 [push]
 	default = current
 [color]
