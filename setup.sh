@@ -1,4 +1,4 @@
-for i in bash_profile gitconfig tmux.conf vim vimrc gitignore; do
+for i in bash_profile gitconfig tmux.conf vim vimrc gitignore eslintrc.json; do
 	if [ ! -e ~/.$i ]; then
 		ln -fs "$(pwd)/.$i" ~/.$i
 	fi

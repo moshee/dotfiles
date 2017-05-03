@@ -115,15 +115,17 @@ command W w !sudo tee > /dev/null %
 au BufRead,BufNewFile Guardfile set ft=ruby
 au BufRead,BufNewFile /etc/nginx/*,/usr/local/nginx/conf/* if &ft == '' | setfiletype nginx | endif 
 
+" au BufWrite *.py :%YAPF
+" au BufWritePre *.py call yapf#YAPFFile()
+au BufWritePre *.py call yapf#YAPF()
+
 au Filetype html,gotplhtml setlocal ts=2 sts=2 sw=2   et
 au FileType pgsql          setlocal ts=4 sts=4 sw=4   et
 au FileType arduino        setlocal ts=4 sts=4 sw=4 noet cindent
 au FileType nginx          setlocal ts=4 sts=4 sw=4 noet cindent
 au FileType css            setlocal ts=2 sts=2 sw=2   et omnifunc=csscomplete#CompleteCSS
 au FileType javascript     setlocal ts=4 sts=4 sw=4 noet omnifunc=javascriptcomplete#CompleteJS
-
 au FileType gotplhtml      runtime! ftplugin/html.vim
-
 au FileType matlab         setlocal commentstring=%\ %s
 
 """ Plugin - Scratch """
@@ -187,3 +189,15 @@ nnoremap <leader>f :FZF<cr>
 
 let g:user_emmet_expandabbr_key = '<c-e>'
 let g:use_emmet_complete_tag = 1
+
+""" Plugin - syntastic """
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_javascript_checkers = ['eslint']
+
+""" Plugin - autoformat """
+
+let g:formatdef_eslint = '"eslint-fmt"'
+let g:formatters_javascript = ['eslint']
+au BufWrite *.js :Autoformat

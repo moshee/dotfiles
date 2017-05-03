@@ -46,3 +46,9 @@
 [submodule ".vim/bundle/vim-qml"]
 	path = .vim/bundle/vim-qml
 	url = https://github.com/peterhoeg/vim-qml.git
+[submodule ".vim/bundle/vim-autoformat"]
+	path = .vim/bundle/vim-autoformat
+	url = https://github.com/Chiel92/vim-autoformat.git
+[submodule ".vim/bundle/syntastic"]
+	path = .vim/bundle/syntastic
+	url = https://github.com/vim-syntastic/syntastic.git
