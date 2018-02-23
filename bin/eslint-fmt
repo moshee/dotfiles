@@ -1,8 +1,9 @@
 #!/bin/bash
 # format code from stdin to stdout with eslint.
 
-tmp=`mktemp`
+tmp=`mktemp $TMPDIR/eslint.fix.XXXXXX`
 
 cat - > "$tmp"
 eslint -o /dev/null -c ~/.eslintrc.json --no-color --fix "$tmp" &>/dev/null
 cat "$tmp"
+rm "$tmp"

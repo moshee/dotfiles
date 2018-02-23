@@ -1,1 +1,0 @@
-/root/dotfiles/submodules/emmet-vim/doc/emmet.txt

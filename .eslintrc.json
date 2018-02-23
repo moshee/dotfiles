@@ -3,27 +3,26 @@
         "browser": true
     },
     "extends": "eslint:recommended",
+	"parserOptions": {
+		"ecmaVersion": 6
+	},
     "rules": {
-        "indent": [
-            "error",
-            "tab",
-			{
-				"SwitchCase": 0
-			}
-        ],
-        "linebreak-style": [
-            "error",
-            "unix"
-        ],
-        "quotes": [
-            "error",
-            "single"
-        ],
-        "semi": [
-            "error",
-            "always"
-        ],
+		"array-bracket-spacing": "warn",
+		"block-spacing": "warn",
+		"brace-style": ["error", "1tbs"],
+		"comma-dangle": ["error", "always"],
+        "indent": ["error", "tab", {"SwitchCase": 0}],
+		"key-spacing": ["error", {"multiLine": {"align": "value"}}],
+        "linebreak-style": [ "error", "unix" ],
 		"no-cond-assign": "off",
-		"no-debugger": "off"
+		"no-debugger": "off",
+		"no-console": "off",
+		"no-whitespace-before-property": "error",
+		"object-curly-spacing": "error",
+        "quotes": [ "error", "single" ],
+		"space-before-function-paren": ["error", "never"],
+		"spaced-comment": "error",
+        "semi": [ "error", "always" ],
+		"semi-spacing": ["error", { "before": false, "after": true }]
     }
 }

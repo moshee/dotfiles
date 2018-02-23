@@ -1,5 +1,5 @@
-.*.swp
-.*.swo
+*.swp
+*.swo
 *.class
 .DS_Store
 ._*
