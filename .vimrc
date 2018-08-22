@@ -53,7 +53,7 @@ set fo+=jMn
 set so=8            " keep space for 8 lines of context around cursor
 set foldmethod=syntax
 set fdls=99
-set balloondelay=500
+set balloondelay=200
 set ballooneval
 set balloonevalterm
 
@@ -65,16 +65,10 @@ if has("unix")
 	endif
 endif
 
-" http://superuser.com/questions/99138/bulleted-lists-for-plain-text-documents-in-vim
-" let &formatlistpat='\v^\s*(\d+[\]:.)}\t ]|[\*\-][\t ])\s*'
-
 let mapleader = ","
 
 " expand one-line css blocks
 nnoremap <leader>e :s/{ \?/{\r\t/<CR>:s/:\(\S\)/: \1/g<CR>:s/; \?/;\r\t/g<CR>:s/;\? *}$/;\r}/<CR>
-
-nnoremap <leader>t i<TAB><ESC>
-nnoremap <leader>d ddpk
 
 " window movement
 nnoremap <C-h> <C-w>h
@@ -91,15 +85,13 @@ nnoremap <leader>, :tabprev<CR>
 nnoremap <leader>+ :tabnew<CR>
 nnoremap <leader>\ :tabclose<CR>
 
-" http://stackoverflow.com/questions/14727173/swap-items-in-comma-separated-list
-nnoremap <silent> gl "_yiw:s/\(\%#\w\+\)\(\_W\+\)\(\w\+\)/\3\2\1/<CR><c-o>/\w\+\_W\+<CR><c-l>
-nnoremap <silent> gh "_yiw?\w\+\_W\+\%#<CR>:s/\(\%#\w\+\)\(\_W\+\)\(\w\+\)/\3\2\1/<CR><c-o><c-l>
-
 " less stupid regex searching
 nnoremap / /\v
 vnoremap / /\v
 nnoremap ? ?\v
 vnoremap ? ?\v
+
+nmap \\ :nohl<CR>
 
 " lazy and accidents
 nnoremap ; :
@@ -283,8 +275,6 @@ inoremap <silent><expr> <TAB>
 inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<cr>"
 
-" autocmd! InsertLeave * if pumvisible() == 0 | pclose | endif
-
 call asyncomplete#register_source({
     \ 'name': 'gocode',
     \ 'whitelist': ['go'],
@@ -292,27 +282,51 @@ call asyncomplete#register_source({
 	\ 'refresh_pattern': '[^.[:digit:] *\t]\(\.\w*\)$',
     \ })
 
-""" ALE """
+if executable('cquery')
+   au User lsp_setup call lsp#register_server({
+      \ 'name': 'cquery',
+      \ 'cmd': {server_info->['cquery']},
+      \ 'root_uri': {server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), 'compile_commands.json'))},
+      \ 'initialization_options': { 'cacheDirectory': '~/.cache/cquery' },
+      \ 'whitelist': ['c', 'cpp', 'cc', 'objc', 'objcpp'],
+      \ })
+endif
 
-let g:ale_lint_delay = 100
+""" Plugin - ALE """
+
+let g:ale_lint_delay = 500
 let g:ale_lint_on_text_changed = 'normal'
 let g:ale_lint_on_insert_leave = 1
+let g:ale_sign_column_always = 1
 let g:ale_set_balloons = 1
-let g:ale_sign_error = '🚫'
-let g:ale_sign_warning = '⚠️'
-let g:ale_sign_info = 'ℹ️'
-hi clear ALEErrorSign
-hi clear ALEWarningSign
+if has('osx')
+	hi clear ALEErrorSign
+	hi clear ALEWarningSign
+	hi clear ALEInfoSign
+	let g:ale_sign_error = '🚫'
+	let g:ale_sign_warning = '⚠️'
+	let g:ale_sign_info = 'ℹ️'
+else
+	let g:ale_sign_error = '!!'
+	let g:ale_sign_warning = '!'
+	let g:ale_sign_info = 'i'
+endif
+let g:ale_go_staticcheck_lint_package = 1
+hi clear SignColumn
 
-func! BalloonExpr()
-    let s:balloon_timer = timer_start(0, 'RealBalloonExpr')
-endfunc
+" func! BalloonExpr()
+"     let s:balloon_timer = timer_start(0, 'RealBalloonExpr')
+" 	return ''
+" endfunc
 
-func! RealBalloonExpr(timer)
-    call balloon_show(ale#balloon#Expr())
-endfunc
+" func! RealBalloonExpr(timer) abort
+" 	let l:expr = ale#balloon#Expr()
+" 	if (!empty(l:expr))
+" 		call balloon_show(l:expr)
+" 	endif
+" endfunc
 
-set balloonexpr=BalloonExpr()
+" set balloonexpr=BalloonExpr()
 
 nnoremap <silent> <leader>n <plug>(ale_previous_wrap)
 nnoremap <silent> <leader>p <plug>(ale_next_wrap)

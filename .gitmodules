@@ -91,3 +91,9 @@
 [submodule ".vim/pack/plugins/start/vim-localrc"]
 	path = .vim/pack/plugins/opt/vim-localrc
 	url = https://github.com/thinca/vim-localrc.git
+[submodule ".vim/pack/plugins/start/asyncomplete-lsp.vim"]
+	path = .vim/pack/plugins/start/asyncomplete-lsp.vim
+	url = https://github.com/prabirshrestha/asyncomplete-lsp.vim
+[submodule ".vim/pack/plugins/start/vim-lsp"]
+	path = .vim/pack/plugins/start/vim-lsp
+	url = https://github.com/prabirshrestha/vim-lsp.git
